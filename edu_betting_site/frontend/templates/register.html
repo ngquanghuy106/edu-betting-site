@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up | Virtual Betting Platform</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+	<header>
+		<a href="/" class="brand">Virtual Betting Platform</a>
+		<a href="/" class="back-link">Back to Home</a>
+	</header>
+
+	<main>
+		<section class="auth-container">
+			<div class="auth-heading">
+				<h1>Create Account</h1>
+				<p>Join the platform and start exploring probability.</p>
+			</div>
+
+			{% if error %}
+				<p class="auth-error">{{ error }}</p>
+			{% endif %}
+
+			<form action="/api/register" method="POST" novalidate>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input
+						type="text"
+						id="username"
+						name="username"
+						placeholder="Choose a username"
+						autocomplete="username"
+						value="{{ username or '' }}"
+					>
+					<div class="username-requirements">
+						<p>Username requirements</p>
+
+						<ul>
+							<li data-username-rule="length">
+								<span>✕</span> 5–50 characters
+							</li>
+							<li data-username-rule="characters">
+								<span>✕</span> Letters, numbers, and underscores only
+							</li>
+							<li data-username-rule="reserved">
+								<span>✕</span> Must not contain "owner", "admin", or "moderator"
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input
+						type="password"
+						id="password"
+						name="password"
+						placeholder="Create a password"
+						autocomplete="new-password"
+					>
+					<div class="password-requirements">
+						<p>Password requirements</p>
+
+						<ul>
+							<li data-rule="length">
+								<span>✕</span> 8–128 characters
+							</li>
+							<li data-rule="lowercase">
+								<span>✕</span> At least one lowercase letter
+							</li>
+							<li data-rule="uppercase">
+								<span>✕</span> At least one uppercase letter
+							</li>
+							<li data-rule="number">
+								<span>✕</span> At least one number
+							</li>
+							<li data-rule="special">
+								<span>✕</span> At least one special character
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="confirm-password">Confirm Password</label>
+					<input
+						type="password"
+						id="confirm-password"
+						name="confirm_password"
+						placeholder="Enter your password again"
+						autocomplete="new-password"
+					>
+				</div>
+
+				<button type="submit" class="submit-button">
+					Create Account
+				</button>
+			</form>
+
+			<p class="auth-switch">
+				Already have an account?
+				<a href="/login">Sign in</a>
+			</p>
+		</section>
+	</main>
+
+	<footer>
+		<p>Educational Simulation Only. Virtual Currency. No Real Money.</p>
+	</footer>
+<script src="{{ url_for('static', filename='js/auth.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign In | Virtual Betting Platform</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+	<header>
+		<a href="/" class="brand">Virtual Betting Platform</a>
+		<a href="/" class="back-link">Back to Home</a>
+	</header>
+
+	<main>
+		<section class="auth-container">
+			<div class="auth-heading">
+				<h1>Welcome Back</h1>
+				<p>Sign in to continue your learning experience.</p>
+			</div>
+
+			{% if error %}
+				<p class="auth-error">{{ error }}</p>
+			{% endif %}
+
+			<form action="/api/login" method="POST">
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input
+						type="text"
+						id="username"
+						name="username"
+						placeholder="Enter your username"
+						autocomplete="username"
+						value="{{ username or '' }}"
+					>
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input
+						type="password"
+						id="password"
+						name="password"
+						placeholder="Enter your password"
+						autocomplete="current-password"
+					>
+				</div>
+
+				<button type="submit" class="submit-button">
+					Sign In
+				</button>
+			</form>
+
+			<p class="auth-switch">
+				Don't have an account?
+				<a href="/register">Sign up</a>
+			</p>
+		</section>
+	</main>
+
+	<footer>
+		<p>Educational Simulation Only. Virtual Currency. No Real Money.</p>
+	</footer>
+</body>
+</html>

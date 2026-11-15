@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Virtual Betting Platform</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<header>
+		<h1>Virtual Betting Platform</h1>
+
+		<nav>
+			{% if logged_in %}
+				<span>{{ username }}</span>
+			{% else %}
+				<a href="/login" class="nav-button sign-in">Sign in</a>
+				<a href="/register" class="nav-button sign-up">Sign up</a>
+			{% endif %}
+		</nav>
+	</header>
+
+	<main>
+		{% if logged_in %}
+			<h2 class="welcome-heading">Welcome, {{ username }}</h2>
+		{% else %}
+			<section>
+				<h2>Welcome</h2>
+
+				<p>
+					Explore simulated betting scenarios,
+					understand probability, and learn how odds work.
+				</p>
+
+				<a href="/register" class="get-started">Get Started</a>
+			</section>
+		{% endif %}
+	</main>
+
+	<footer>
+		<p>Educational Simulation Only. Virtual Currency. No Real Money.</p>
+	</footer>
+</body>
+</html>
