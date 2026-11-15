@@ -99,6 +99,11 @@ class Server:
 
             return redirect("/")
 
+        @self.app.route("/logout", methods=["POST"])
+        def logout():
+            session.clear()
+            return redirect("/")
+
     def run(self):
         self.app.run(
             host="0.0.0.0",

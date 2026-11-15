@@ -190,3 +190,43 @@ footer {
 	color: var(--text);
 	text-align: center;
 }
+
+.profile-menu {
+	position: relative;
+}
+
+.profile-menu summary {
+	cursor: pointer;
+	list-style: none;
+}
+
+.profile-menu summary::-webkit-details-marker {
+	display: none;
+}
+
+.profile-menu form {
+	position: absolute;
+	top: calc(100% + 8px);
+	right: 0;
+	min-width: 130px;
+	padding: 6px;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	z-index: 10;
+}
+
+.sign-out {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background: var(--red);
+	color: var(--text);
+	cursor: pointer;
+	text-align: left;
+}
+
+.sign-out:hover {
+	opacity: 0.85;
+}

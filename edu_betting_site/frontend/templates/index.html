@@ -12,7 +12,15 @@
 
 		<nav>
 			{% if logged_in %}
-				<span>{{ username }}</span>
+				<details class="profile-menu">
+					<summary class="nav-button">Profile</summary>
+
+					<form action="/logout" method="POST">
+						<button type="submit" class="sign-out">
+							Sign out
+						</button>
+					</form>
+				</details>
 			{% else %}
 				<a href="/login" class="nav-button sign-in">Sign in</a>
 				<a href="/register" class="nav-button sign-up">Sign up</a>
